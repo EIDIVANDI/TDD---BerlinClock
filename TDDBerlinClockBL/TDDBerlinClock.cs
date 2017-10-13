@@ -4,8 +4,10 @@ namespace TDDBerlinClockBL
 {
     public class TDDBerlinClock
     {
+        private string _result ;
         public TDDBerlinClock()
         {
+            _result = "01234";
         }
 
         public string[] GenerateBerlinTime(DateTime t)
@@ -36,6 +38,7 @@ namespace TDDBerlinClockBL
                 "YYRYYRYYRYY",
             };
 
+            _result = _result.Replace("3", singleMinutes[div]);
             return singleMinutes[div];
         }
 
@@ -52,7 +55,7 @@ namespace TDDBerlinClockBL
                 "RRRO",
                 "RRRR"
             };
-
+            _result = _result.Replace("2", singleMinutes[div]);
             return singleMinutes[div];
         }
 
@@ -69,7 +72,7 @@ namespace TDDBerlinClockBL
                 "RRRO",
                 "RRRR"
             };
-
+            _result = _result.Replace("1", singleMinutes[mod]);
             return singleMinutes[mod];
         }
 
@@ -83,7 +86,7 @@ namespace TDDBerlinClockBL
                 "Y",
                 "O"
             };
-
+           _result = _result.Replace("0", singleMinutes[mod]);
             return singleMinutes[mod];
         }
         
@@ -100,12 +103,14 @@ namespace TDDBerlinClockBL
                 "YYYO",
                 "YYYY"
             };
-
+            _result = _result.Replace("4", singleMinutes[mod]);
             return singleMinutes[mod];
         }
-        public string ShowTime(DateTime t)
+        private string ShowTime(DateTime t)
         {
             return t.ToLongTimeString();
         }
+
+        public override string ToString() => _result;
     }
 }

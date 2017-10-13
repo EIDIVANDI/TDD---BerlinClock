@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TDDBerlinClockBL;
 
 namespace TDD___BerlinClock
 {
@@ -22,10 +23,13 @@ namespace TDD___BerlinClock
 
             var tmp = tm.Split(':');
 
-            Console.WriteLine(String.Join("",
-                new TDDBerlinClockBL.TDDBerlinClock().GenerateBerlinTime(
+            TDDBerlinClock clock = new TDDBerlinClock();
+
+            clock.GenerateBerlinTime(
                    new DateTime(2017, 10, 10, int.Parse(tmp[0]), int.Parse(tmp[1]), int.Parse(tmp[2]), 0, DateTimeKind.Utc)
-                    )));
+                    );
+
+            Console.WriteLine(clock.ToString());
 
             Console.WriteLine("\nPress any key to continue");
             Console.ReadKey();
